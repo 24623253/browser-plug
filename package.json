@@ -1,0 +1,39 @@
+{
+  "name": "video-download-helper",
+  "version": "1.0.0",
+  "description": "智能视频下载助手 - 支持YouTube、哔哩哔哩、抖音等平台的多分辨率视频下载",
+  "main": "background.js",
+  "scripts": {
+    "build": "echo 'Chrome扩展无需构建，直接加载到浏览器即可'",
+    "lint": "eslint *.js",
+    "format": "prettier --write *.js *.html *.css",
+    "test": "echo 'No tests specified'",
+    "zip": "zip -r video-download-helper.zip . -x '*.git*' 'node_modules/*' '*.zip'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "video-download",
+    "youtube",
+    "bilibili",
+    "douyin",
+    "tiktok",
+    "video-downloader"
+  ],
+  "author": "Video Download Helper Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/video-download-helper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/video-download-helper/issues"
+  },
+  "homepage": "https://github.com/your-username/video-download-helper#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视频下载助手 - 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🎬 视频下载助手 - 设置</h1>
+        <p>配置您的下载偏好和外部工具</p>
+      </header>
+
+      <main class="content">
+        <!-- 基本设置 -->
+        <section class="section">
+          <h2>📋 基本设置</h2>
+          <div class="setting-group">
+            <label for="defaultQuality">默认画质:</label>
+            <select id="defaultQuality" class="form-control">
+              <option value="1080p">1080p (高清)</option>
+              <option value="720p">720p (标清)</option>
+              <option value="480p">480p (流畅)</option>
+              <option value="360p">360p (极速)</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="autoDetect" />
+              <span class="checkmark"></span>
+              自动检测页面视频
+            </label>
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="showNotifications" />
+              <span class="checkmark"></span>
+              显示下载通知
+            </label>
+          </div>
+        </section>
+
+        <!-- 下载设置 -->
+        <section class="section">
+          <h2>⬇️ 下载设置</h2>
+          <div class="setting-group">
+            <label for="downloadPath">下载路径:</label>
+            <input
+              type="text"
+              id="downloadPath"
+              class="form-control"
+              placeholder="默认下载文件夹"
+              readonly
+            />
+            <button id="choosePathBtn" class="btn-secondary">选择文件夹</button>
+          </div>
+
+          <div class="setting-group">
+            <label for="filenameTemplate">文件名模板:</label>
+            <input
+              type="text"
+              id="filenameTemplate"
+              class="form-control"
+              placeholder="[平台] 标题 [画质].扩展名"
+            />
+            <small class="help-text">
+              可用变量: {platform}, {title}, {quality}, {date}, {time}
+            </small>
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="preventDuplicates" />
+              <span class="checkmark"></span>
+              防止重复下载
+            </label>
+          </div>
+        </section>
+
+        <!-- 外部工具 -->
+        <section class="section">
+          <h2>🔧 外部工具集成</h2>
+          <div class="setting-group">
+            <label for="preferredTool">首选下载工具:</label>
+            <select id="preferredTool" class="form-control">
+              <option value="browser">浏览器内置下载</option>
+              <option value="yt-dlp">yt-dlp</option>
+              <option value="idm">Internet Download Manager</option>
+              <option value="aria2">Aria2</option>
+            </select>
+          </div>
+
+          <div class="tool-config" id="ytdlpConfig">
+            <h3>yt-dlp 配置</h3>
+            <div class="setting-group">
+              <label for="ytdlpPath">yt-dlp 路径:</label>
+              <input
+                type="text"
+                id="ytdlpPath"
+                class="form-control"
+                placeholder="C:\yt-dlp\yt-dlp.exe"
+              />
+            </div>
+            <div class="setting-group">
+              <label for="ytdlpArgs">额外参数:</label>
+              <input
+                type="text"
+                id="ytdlpArgs"
+                class="form-control"
+                placeholder="--embed-subs --write-thumbnail"
+              />
+            </div>
+          </div>
+
+          <div class="tool-config" id="idmConfig" style="display: none">
+            <h3>IDM 配置</h3>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="idmAutoStart" />
+                <span class="checkmark"></span>
+                自动开始下载
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 平台设置 -->
+        <section class="section">
+          <h2>🌐 平台设置</h2>
+          <div class="platform-group">
+            <h3>YouTube</h3>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="youtubeEnabled" checked />
+                <span class="checkmark"></span>
+                启用 YouTube 支持
+              </label>
+            </div>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="youtubeSubtitles" />
+                <span class="checkmark"></span>
+                下载字幕文件
+              </label>
+            </div>
+          </div>
+
+          <div class="platform-group">
+            <h3>哔哩哔哩</h3>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="bilibiliEnabled" checked />
+                <span class="checkmark"></span>
+                启用哔哩哔哩支持
+              </label>
+            </div>
+            <div class="setting-group">
+              <label for="bilibiliCookie">登录Cookie (可选):</label>
+              <textarea
+                id="bilibiliCookie"
+                class="form-control"
+                placeholder="粘贴B站cookie以访问高画质视频"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="platform-group">
+            <h3>抖音</h3>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="douyinEnabled" checked />
+                <span class="checkmark"></span>
+                启用抖音支持
+              </label>
+            </div>
+            <div class="setting-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="douyinWatermark" />
+                <span class="checkmark"></span>
+                保留水印
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 高级设置 -->
+        <section class="section">
+          <h2>⚙️ 高级设置</h2>
+          <div class="setting-group">
+            <label for="maxConcurrent">最大同时下载数:</label>
+            <input
+              type="number"
+              id="maxConcurrent"
+              class="form-control"
+              min="1"
+              max="10"
+              value="3"
+            />
+          </div>
+
+          <div class="setting-group">
+            <label for="timeout">网络超时 (秒):</label>
+            <input
+              type="number"
+              id="timeout"
+              class="form-control"
+              min="10"
+              max="300"
+              value="60"
+            />
+          </div>
+
+          <div class="setting-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="debugMode" />
+              <span class="checkmark"></span>
+              调试模式（显示详细日志）
+            </label>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="button-group">
+          <button id="saveBtn" class="btn-primary">💾 保存设置</button>
+          <button id="resetBtn" class="btn-secondary">🔄 重置默认值</button>
+          <button id="exportBtn" class="btn-secondary">📤 导出配置</button>
+          <button id="importBtn" class="btn-secondary">📥 导入配置</button>
+        </div>
+        <div class="footer-info">
+          <p>
+            视频下载助手 v1.0.0 |
+            <a href="#" id="helpLink">帮助文档</a> |
+            <a href="#" id="feedbackLink">反馈建议</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <input type="file" id="importFile" accept=".json" style="display: none" />
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频下载助手 - 测试页面</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .test-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        video {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .test-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .test-steps {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .test-steps ol {
+            margin: 10px 0 0 20px;
+        }
+        
+        .test-steps li {
+            margin: 5px 0;
+        }
+        
+        .link-section {
+            background: #f3e5f5;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .link-section a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .status {
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.info {
+            background: #cce5ff;
+            color: #004085;
+            border: 1px solid #b3d7ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 视频下载助手 - 测试页面</h1>
+        
+        <!-- 本地视频测试 -->
+        <div class="test-section">
+            <h2>📹 本地视频测试</h2>
+            <div class="test-info">
+                <strong>用途：</strong>测试插件基本功能，检测HTML5视频元素
+            </div>
+            
+            <video controls poster="https://via.placeholder.com/640x360/667eea/ffffff?text=测试视频">
+                <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                <source src="https://sample-videos.com/zip/10/webm/SampleVideo_1280x720_1mb.webm" type="video/webm">
+                您的浏览器不支持视频播放
+            </video>
+            
+            <div class="test-steps">
+                <strong>测试步骤：</strong>
+                <ol>
+                    <li>确保视频能正常播放</li>
+                    <li>点击浏览器工具栏的插件图标</li>
+                    <li>应该显示"测试视频"相关信息</li>
+                    <li>选择画质并尝试下载</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- 多格式视频测试 -->
+        <div class="test-section">
+            <h2>🎦 多格式视频测试</h2>
+            <div class="test-info">
+                <strong>用途：</strong>测试不同视频格式的检测能力
+            </div>
+            
+            <!-- MP4 视频 -->
+            <h3>MP4 格式</h3>
+            <video controls>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            </video>
+            
+            <!-- WebM 视频 -->
+            <h3>WebM 格式</h3>
+            <video controls>
+                <source src="https://sample-videos.com/zip/10/webm/SampleVideo_640x360_1mb.webm" type="video/webm">
+            </video>
+        </div>
+        
+        <!-- 真实网站测试 -->
+        <div class="test-section">
+            <h2>🌐 真实网站测试</h2>
+            <div class="test-info">
+                <strong>用途：</strong>测试在真实视频网站上的表现
+            </div>
+            
+            <div class="link-section">
+                <h3>YouTube 测试</h3>
+                <p>访问任意YouTube视频页面测试：</p>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                    🎵 经典测试视频 (Rick Roll)
+                </a>
+                <div class="status info">
+                    <strong>预期结果：</strong>检测到视频但提示使用yt-dlp下载
+                </div>
+            </div>
+            
+            <div class="link-section">
+                <h3>哔哩哔哩测试</h3>
+                <p>访问B站视频页面测试：</p>
+                <a href="https://www.bilibili.com/video/BV1xx411c7mD" target="_blank">
+                    📺 B站经典视频
+                </a>
+                <div class="status info">
+                    <strong>预期结果：</strong>检测到视频但可能需要登录获取高画质
+                </div>
+            </div>
+            
+            <div class="link-section">
+                <h3>抖音测试</h3>
+                <p>访问抖音网页版测试：</p>
+                <a href="https://www.douyin.com/" target="_blank">
+                    🎤 抖音网页版
+                </a>
+                <div class="status info">
+                    <strong>预期结果：</strong>可能能检测到视频并直接下载
+                </div>
+            </div>
+        </div>
+        
+        <!-- 调试信息 -->
+        <div class="test-section">
+            <h2>🔍 调试信息</h2>
+            <div class="test-info">
+                <strong>用途：</strong>查看详细的调试信息和日志
+            </div>
+            
+            <div class="test-steps">
+                <strong>调试步骤：</strong>
+                <ol>
+                    <li>按F12打开开发者工具</li>
+                    <li>切换到Console标签页</li>
+                    <li>触发视频检测或下载</li>
+                    <li>查看控制台输出的详细日志</li>
+                </ol>
+            </div>
+            
+            <div id="debug-info" class="status info">
+                <strong>当前页面视频元素：</strong>
+                <div id="video-count">检测中...</div>
+                <div id="video-details"></div>
+            </div>
+        </div>
+        
+        <!-- 常见问题 -->
+        <div class="test-section">
+            <h2>❓ 常见问题</h2>
+            
+            <div class="status error">
+                <strong>问题：</strong>插件图标是灰色的<br>
+                <strong>解决：</strong>确保在支持的视频网站上，或刷新页面
+            </div>
+            
+            <div class="status error">
+                <strong>问题：</strong>显示"未检测到视频"<br>
+                <strong>解决：</strong>确保视频开始播放，等待加载完成
+            </div>
+            
+            <div class="status error">
+                <strong>问题：</strong>下载一直显示"准备中"<br>
+                <strong>解决：</strong>查看控制台错误信息，可能需要使用外部工具
+            </div>
+            
+            <div class="status success">
+                <strong>成功标志：</strong>
+                <ul style="margin: 5px 0 0 20px;">
+                    <li>插件图标显示绿色对勾</li>
+                    <li>点击后显示视频信息</li>
+                    <li>有多个画质选项</li>
+                    <li>下载按钮可点击</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 页面加载完成后显示调试信息
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDebugInfo();
+            
+            // 定期更新调试信息
+            setInterval(updateDebugInfo, 3000);
+        });
+        
+        function updateDebugInfo() {
+            const videos = document.querySelectorAll('video');
+            const countEl = document.getElementById('video-count');
+            const detailsEl = document.getElementById('video-details');
+            
+            countEl.textContent = `发现 ${videos.length} 个视频元素`;
+            
+            let details = '';
+            videos.forEach((video, index) => {
+                const src = video.src || video.currentSrc || '无源地址';
+                const duration = video.duration || 0;
+                const state = video.readyState;
+                
+                details += `
+                    <div style="margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 4px;">
+                        <strong>视频 ${index + 1}:</strong><br>
+                        📎 地址: ${src.substring(0, 50)}${src.length > 50 ? '...' : ''}<br>
+                        ⏱️ 时长: ${duration ? Math.round(duration) + '秒' : '未知'}<br>
+                        📊 状态: ${getReadyStateText(state)}<br>
+                        📐 尺寸: ${video.videoWidth || '?'} × ${video.videoHeight || '?'}
+                    </div>
+                `;
+            });
+            
+            detailsEl.innerHTML = details || '<em>暂无视频详情</em>';
+        }
+        
+        function getReadyStateText(state) {
+            const states = {
+                0: '未初始化',
+                1: '元数据已加载',
+                2: '当前帧已加载',
+                3: '部分数据可用',
+                4: '完全可用'
+            };
+            return states[state] || '未知状态';
+        }
+        
+        // 手动触发视频检测（如果插件已安装）
+        function testPluginDetection() {
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                try {
+                    chrome.runtime.sendMessage({action: 'detectVideos'}, response => {
+                        console.log('插件检测结果:', response);
+                    });
+                } catch (e) {
+                    console.log('插件未安装或未启用');
+                }
+            }
+        }
+        
+        // 在控制台提供测试函数
+        window.testPlugin = testPluginDetection;
+        console.log('测试页面已加载，在控制台运行 testPlugin() 可手动测试插件');
+    </script>
+</body>
+</html>

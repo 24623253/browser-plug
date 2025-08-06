@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>视频下载助手</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🎬 视频下载助手</h1>
+      </header>
+
+      <div class="content">
+        <div id="loading" class="loading">
+          <div class="spinner"></div>
+          <p>正在检测视频...</p>
+        </div>
+
+        <div id="no-video" class="no-video" style="display: none">
+          <div class="icon">📹</div>
+          <p>当前页面未检测到可下载的视频</p>
+          <small>请访问包含视频的网页</small>
+        </div>
+
+        <div id="video-list" class="video-list" style="display: none">
+          <!-- 视频列表将在这里动态生成 -->
+        </div>
+      </div>
+
+      <footer class="footer">
+        <button id="refresh-btn" class="btn-secondary">🔄 重新检测</button>
+        <button id="settings-btn" class="btn-secondary">⚙️ 设置</button>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
